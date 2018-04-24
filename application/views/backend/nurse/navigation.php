@@ -72,12 +72,18 @@
             </a>
         </li>
         
-        <li class="<?php if ($page_name == 'manage_bed' || $page_name == 'manage_bed_allotment') echo 'opened active has-sub'; ?> ">
+        <li class="<?php if ($page_name == 'manage_bed_visual' || $page_name == 'manage_bed' || $page_name == 'manage_bed_allotment') echo 'opened active has-sub'; ?> ">
             <a href="#">
                 <i class="fa fa-hdd-o"></i>
                 <span><?php echo get_phrase('bed_/_ward'); ?></span>
             </a>
             <ul>
+                <li class="<?php if ($page_name == 'manage_bed_visual') echo 'active'; ?>">
+                    <a href="<?php echo site_url('nurse/bed_visual');?>">
+                        <i class="fa fa-hdd-o"></i>
+                        <span><?php echo get_phrase('bed_visual'); ?></span>
+                    </a>
+                </li>
                 <li class="<?php if ($page_name == 'manage_bed') echo 'active'; ?>">
                     <a href="<?php echo site_url('nurse/bed');?>">
                         <i class="fa fa-hdd-o"></i>

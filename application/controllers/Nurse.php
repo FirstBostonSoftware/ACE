@@ -88,6 +88,36 @@ class Nurse extends CI_Controller
         $data['page_title'] = get_phrase('bed');
         $this->load->view('backend/index', $data);
     }
+
+    function bed_visual($task = "", $bed_id = "")
+    {
+        if ($this->session->userdata('nurse_login') != 1) {
+            $this->session->set_userdata('last_page', current_url());
+            redirect(site_url(), 'refresh');
+        }
+        
+        if ($task == "create") {
+            $this->crud_model->save_bed_info();
+            $this->session->set_flashdata('message', get_phrase('bed_info_saved_successfuly'));
+            redirect(site_url('nurse/bed_visual'), 'refresh');
+        }
+        
+        if ($task == "update") {
+            $this->crud_model->update_bed_info($bed_id);
+            $this->session->set_flashdata('message', get_phrase('bed_info_updated_successfuly'));
+            redirect(site_url('nurse/bed_visual'), 'refresh');
+        }
+        
+        if ($task == "delete") {
+            $this->crud_model->delete_bed_info($bed_id);
+            redirect(site_url('nurse/bed_visual'), 'refresh');
+        }
+        
+        $data['bed_info']   = $this->crud_model->select_bed_info();
+        $data['page_name']  = 'manage_bed_visual';
+        $data['page_title'] = get_phrase('bed_visual');
+        $this->load->view('backend/index', $data);
+    }
     
     function bed_allotment($task = "", $bed_allotment_id = "")
     {
