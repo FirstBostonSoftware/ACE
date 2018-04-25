@@ -888,6 +888,38 @@ class Crud_model extends CI_Model {
         $this->db->delete('bed');
     }
 
+    function save_room_info()
+    {
+        $data['room_number']     = $this->input->post('room_number');
+        $data['type']       = $this->input->post('type');
+        $data['floor']       = $this->input->post('floor');
+        $data['description']    = $this->input->post('description');
+        $returned_array = null_checking($data);
+        $this->db->insert('room',$returned_array);
+    }
+
+    function select_room_info()
+    {
+        return $this->db->get('room')->result_array();
+    }
+
+    function update_room_info($room_id)
+    {   
+        $data['room_number']     = $this->input->post('room_number');
+        $data['type']       = $this->input->post('type');
+        $data['floor']       = $this->input->post('floor');
+        $data['description']    = $this->input->post('description');
+        $returned_array = null_checking($data);
+        $this->db->where('room_id',$room_id);
+        $this->db->update('room',$returned_array);
+    }
+
+    function delete_room_info($room_id)
+    {
+        $this->db->where('room_id',$room_id);
+        $this->db->delete('room');
+    }
+
     function save_blood_donor_info()
     {
         $data['name']                       = $this->input->post('name');

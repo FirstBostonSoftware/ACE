@@ -29,7 +29,7 @@
         <a href="#">
             <div class="tile-stats tile-white tile-white-primary" onclick="showAjaxModal('<?php echo site_url('modal/popup/bed_visual/123');?>');" class="btn btn-primary">
                 <div class="num">Room 123</div>
-                <h6>Type: Ward &nbsp; Floor: 1 &nbsp; Vacant: 2 of 12</h6>
+                <h6>Vacant: 2 of 12 &nbsp; Type: Ward &nbsp; Floor: 1</h6>
             </div>
         </a>
     </div>

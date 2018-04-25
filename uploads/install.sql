@@ -78,8 +78,24 @@ DROP TABLE IF EXISTS `bed`;
 CREATE TABLE `bed` (
   `bed_id` int(11) NOT NULL,
   `bed_number` longtext,
+  `room_id` int(11) DEFAULT NULL,
   `type` longtext,
   `status` int(11) DEFAULT NULL,
+  `description` longtext
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room`
+--
+
+DROP TABLE IF EXISTS `room`;
+CREATE TABLE `room` (
+  `room_id` int(11) NOT NULL,
+  `room_number` longtext,
+  `type` longtext,
+  `floor` int(11) DEFAULT NULL,
   `description` longtext
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -1050,6 +1066,12 @@ ALTER TABLE `bed`
   ADD PRIMARY KEY (`bed_id`);
 
 --
+-- Indexes for table `room`
+--
+ALTER TABLE `room`
+  ADD PRIMARY KEY (`room_id`);
+
+--
 -- Indexes for table `bed_allotment`
 --
 ALTER TABLE `bed_allotment`
@@ -1290,6 +1312,11 @@ ALTER TABLE `appointment`
 --
 ALTER TABLE `bed`
   MODIFY `bed_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `room`
+--
+ALTER TABLE `room`
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `bed_allotment`
 --

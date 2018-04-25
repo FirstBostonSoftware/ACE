@@ -89,6 +89,36 @@ class Nurse extends CI_Controller
         $this->load->view('backend/index', $data);
     }
 
+    function room($task = "", $room_id = "")
+    {
+        if ($this->session->userdata('nurse_login') != 1) {
+            $this->session->set_userdata('last_page', current_url());
+            redirect(site_url(), 'refresh');
+        }
+        
+        if ($task == "create") {
+            $this->crud_model->save_room_info();
+            $this->session->set_flashdata('message', get_phrase('room_info_saved_successfuly'));
+            redirect(site_url('nurse/room'), 'refresh');
+        }
+        
+        if ($task == "update") {
+            $this->crud_model->update_room_info($room_id);
+            $this->session->set_flashdata('message', get_phrase('room_info_updated_successfuly'));
+            redirect(site_url('nurse/room'), 'refresh');
+        }
+        
+        if ($task == "delete") {
+            $this->crud_model->delete_room_info($room_id);
+            redirect(site_url('nurse/room'), 'refresh');
+        }
+        
+        $data['room_info']   = $this->crud_model->select_room_info();
+        $data['page_name']  = 'manage_room';
+        $data['page_title'] = get_phrase('room');
+        $this->load->view('backend/index', $data);
+    }
+
     function bed_visual($task = "", $bed_id = "")
     {
         if ($this->session->userdata('nurse_login') != 1) {
