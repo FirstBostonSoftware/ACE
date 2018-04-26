@@ -78,7 +78,7 @@ DROP TABLE IF EXISTS `bed`;
 CREATE TABLE `bed` (
   `bed_id` int(11) NOT NULL,
   `bed_number` longtext,
-  `room_id` int(11) DEFAULT NULL,
+  `room_number` int(11) DEFAULT NULL,
   `type` longtext,
   `status` int(11) DEFAULT NULL,
   `description` longtext

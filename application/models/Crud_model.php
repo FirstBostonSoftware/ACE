@@ -861,7 +861,7 @@ class Crud_model extends CI_Model {
     function save_bed_info()
     {
         $data['bed_number']     = $this->input->post('bed_number');
-        $data['type'] 		= $this->input->post('type');
+        $data['room_number'] 		= $this->input->post('room_number');
         $data['description']    = $this->input->post('description');
         $returned_array = null_checking($data);
         $this->db->insert('bed',$returned_array);
@@ -875,7 +875,7 @@ class Crud_model extends CI_Model {
     function update_bed_info($bed_id)
     {
         $data['bed_number']     = $this->input->post('bed_number');
-        $data['type'] 		= $this->input->post('type');
+        $data['room_number'] 	= $this->input->post('room_number');
         $data['description']    = $this->input->post('description');
         $returned_array = null_checking($data);
         $this->db->where('bed_id',$bed_id);

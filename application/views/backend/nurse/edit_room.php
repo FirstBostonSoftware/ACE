@@ -15,7 +15,7 @@ foreach ($single_room_info as $row) {
 
                 <div class="panel-body">
 
-                    <form role="form" class="form-horizontal form-groups-bordered" action="<?php echo site_url('nurse/room/update/'.$row['room_id']); ?>" 
+                    <form role="form" class="form-horizontal form-groups" action="<?php echo site_url('nurse/room/update/'.$row['room_id']); ?>" 
                         method="post" enctype="multipart/form-data">
 
                         <div class="form-group">

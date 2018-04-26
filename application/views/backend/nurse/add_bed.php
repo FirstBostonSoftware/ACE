@@ -1,3 +1,8 @@
+<?php
+$rooms = $this->db->select('room_number')->get('room')->result_array();
+$room_numbers = array_column($rooms, 'room_number')
+?>
+
 <div class="row">
     <div class="col-md-12">
 
@@ -23,14 +28,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="field-ta" class="col-sm-3 control-label"><?php echo get_phrase('type'); ?></label>
+                        <label for="field-ta" class="col-sm-3 control-label"><?php echo get_phrase('room_number'); ?></label>
 
                         <div class="col-sm-7">
-                            <select name="type" class="form-control select2" required>
-                                <option value=""><?php echo get_phrase('select_type'); ?></option>
-                                <option value="ward"><?php echo get_phrase('ward'); ?></option>
-                                <option value="cabin"><?php echo get_phrase('cabin'); ?></option>
-                                <option value="icu"><?php echo get_phrase('icu'); ?></option>
+                            <select name="room_number" class="form-control select" required>
+                                <option value=""><?php echo get_phrase('select_room_number'); ?></option>
+                                <?php foreach($room_numbers as $room_number){?>
+                                <option value="<?php echo $room_number; ?>"><?php echo $room_number?></option>
+                                <?php }?>
                             </select>
                         </div>
                     </div>

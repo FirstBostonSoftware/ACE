@@ -1,5 +1,9 @@
 <?php
+$rooms = $this->db->select('room_number')->get('room')->result_array();
+$room_numbers = array_column($rooms, 'room_number');
+
 $single_bed_info = $this->db->get_where('bed', array('bed_id' => $param2))->result_array();
+
 foreach ($single_bed_info as $row) {
 ?>
     <div class="row">
@@ -15,7 +19,7 @@ foreach ($single_bed_info as $row) {
 
                 <div class="panel-body">
 
-                    <form role="form" class="form-horizontal form-groups-bordered" action="<?php echo site_url('nurse/bed/update/'.$row['bed_id']); ?>" 
+                    <form role="form" class="form-horizontal form-groups" action="<?php echo site_url('nurse/bed/update/'.$row['bed_id']); ?>" 
                         method="post" enctype="multipart/form-data">
 
                         <div class="form-group">
@@ -27,20 +31,15 @@ foreach ($single_bed_info as $row) {
                         </div>
 
                         <div class="form-group">
-                            <label for="field-ta" class="col-sm-3 control-label"><?php echo get_phrase('type'); ?></label>
+                            <label for="field-ta" class="col-sm-3 control-label"><?php echo get_phrase('room_number'); ?></label>
 
                             <div class="col-sm-7">
-                                <select name="type" class="form-control select2" required>
-                                    <option value=""><?php echo get_phrase('select_type'); ?></option>
-                                    <option value="ward" <?php if ($row['type'] == 'ward')echo 'selected';?>>
-                                        <?php echo get_phrase('ward'); ?>
-                                    </option>
-                                    <option value="cabin" <?php if ($row['type'] == 'cabin')echo 'selected';?>>
-                                        <?php echo get_phrase('cabin'); ?>
-                                    </option>
-                                    <option value="icu" <?php if ($row['type'] == 'icu')echo 'selected';?>>
-                                        <?php echo get_phrase('icu'); ?>
-                                    </option>
+                                <select name="room_number" class="form-control select" required>
+                                    <option value=""><?php echo get_phrase('select_room_number'); ?></option>
+                                    <?php foreach($room_numbers as $room_number){?>
+                                        <option value="<?php echo $room_number; ?>" 
+                                            <?php if($row['room_number'] == $room_number) { echo 'selected'; }?>><?php echo $room_number?></option>
+                                    <?php }?>
                                 </select>
                             </div>
                         </div>
