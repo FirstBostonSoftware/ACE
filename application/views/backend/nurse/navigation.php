@@ -90,12 +90,12 @@
                         <span><?php echo get_phrase('manage_room'); ?></span>
                     </a>
                 </li>
-                <li class="<?php if ($page_name == 'manage_bed') echo 'active'; ?>">
+                <!-- <li class="<?php if ($page_name == 'manage_bed') echo 'active'; ?>">
                     <a href="<?php echo site_url('nurse/bed');?>">
                         <i class="fa fa-hdd-o"></i>
                         <span><?php echo get_phrase('manage_bed'); ?></span>
                     </a>
-                </li>
+                </li> -->
                 <li class="<?php if ($page_name == 'manage_bed_allotment') echo 'active'; ?>">
                     <a href="<?php echo site_url('nurse/bed_allotment');?>">
                         <i class="fa fa-wrench"></i>

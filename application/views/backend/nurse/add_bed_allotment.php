@@ -1,5 +1,5 @@
 <?php
-$bed_info = $this->db->get('bed')->result_array();
+$rooms = $this->db->get('room')->result_array();
 $patient_info = $this->db->get('patient')->result_array();
 ?>
 <div class="row">
@@ -19,13 +19,13 @@ $patient_info = $this->db->get('patient')->result_array();
                     method="post" enctype="multipart/form-data">
 
                     <div class="form-group">
-                        <label for="field-ta" class="col-sm-3 control-label"><?php echo get_phrase('bed_number'); ?></label>
+                        <label for="field-ta" class="col-sm-3 control-label"><?php echo get_phrase('room_number'); ?></label>
 
                         <div class="col-sm-7">
-                            <select name="bed_id" class="form-control select2" required>
-                                <option value=""><?php echo get_phrase('select_bed_number'); ?></option>
-                                <?php foreach ($bed_info as $row) { ?>
-                                    <option value="<?php echo $row['bed_id']; ?>"><?php echo $row['bed_number'] .' - '.$row['type'] ; ?></option>
+                            <select name="room_number" class="form-control select2" required>
+                                <option value=""><?php echo get_phrase('select_room_number'); ?></option>
+                                <?php foreach ($rooms as $room) { ?>
+                                    <option value="<?php echo $room['room_number']; ?>"><?php echo $room['room_number'] .' - '.$room['type'] ; ?></option>
                                 <?php } ?>
                             </select>
                         </div>

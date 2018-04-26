@@ -9,6 +9,7 @@
         <tr>
             <th><?php echo get_phrase('bed_number');?></th>
             <th><?php echo get_phrase('room_number');?></th>
+            <th><?php echo get_phrase('status');?></th>
             <th><?php echo get_phrase('description');?></th>
             <th><?php echo get_phrase('options');?></th>
         </tr>
@@ -19,6 +20,7 @@
             <tr>
                 <td><?php echo $row['bed_number'] ?></td>
                 <td><?php echo $row['room_number'] ?></td>
+                <td><?php echo $row['status'] ?></td>
                 <td><?php echo $row['description'] ?></td>
                 <td>
                     <a  onclick="showAjaxModal('<?php echo site_url('modal/popup/edit_bed/'.$row['bed_id']);?>');" 

@@ -729,7 +729,7 @@ class Crud_model extends CI_Model {
 
     function save_bed_allotment_info()
     {
-        $data['bed_id']                 = $this->input->post('bed_id');
+        $data['room_number']            = $this->input->post('room_number');
         $data['patient_id'] 		    = $this->input->post('patient_id');
         $data['allotment_timestamp'] 	= strtotime($this->input->post('allotment_timestamp'));
         $data['discharge_timestamp']    = strtotime($this->input->post('discharge_timestamp'));
@@ -744,8 +744,8 @@ class Crud_model extends CI_Model {
 
     function update_bed_allotment_info($bed_allotment_id)
     {
-        $data['bed_id']                 = $this->input->post('bed_id');
-        $data['patient_id'] 		= $this->input->post('patient_id');
+        $data['room_number']            = $this->input->post('room_number');
+        $data['patient_id'] 		    = $this->input->post('patient_id');
         $data['allotment_timestamp'] 	= strtotime($this->input->post('allotment_timestamp'));
         $data['discharge_timestamp']    = strtotime($this->input->post('discharge_timestamp'));
         $returned_array = null_checking($data);
@@ -861,9 +861,10 @@ class Crud_model extends CI_Model {
     function save_bed_info()
     {
         $data['bed_number']     = $this->input->post('bed_number');
-        $data['room_number'] 		= $this->input->post('room_number');
+        $data['room_number'] 	= $this->input->post('room_number');
         $data['description']    = $this->input->post('description');
-        $returned_array = null_checking($data);
+        $data['status']         = 0;
+        $returned_array         = null_checking($data);
         $this->db->insert('bed',$returned_array);
     }
 
@@ -877,7 +878,7 @@ class Crud_model extends CI_Model {
         $data['bed_number']     = $this->input->post('bed_number');
         $data['room_number'] 	= $this->input->post('room_number');
         $data['description']    = $this->input->post('description');
-        $returned_array = null_checking($data);
+        $returned_array         = null_checking($data);
         $this->db->where('bed_id',$bed_id);
         $this->db->update('bed',$returned_array);
     }
@@ -891,10 +892,11 @@ class Crud_model extends CI_Model {
     function save_room_info()
     {
         $data['room_number']     = $this->input->post('room_number');
-        $data['type']       = $this->input->post('type');
-        $data['floor']       = $this->input->post('floor');
-        $data['description']    = $this->input->post('description');
-        $returned_array = null_checking($data);
+        $data['type']            = $this->input->post('type');
+        $data['floor']           = $this->input->post('floor');
+        $data['bed_count']       = $this->input->post('bed_count');
+        $data['description']     = $this->input->post('description');
+        $returned_array          = null_checking($data);
         $this->db->insert('room',$returned_array);
     }
 
@@ -908,6 +910,7 @@ class Crud_model extends CI_Model {
         $data['room_number']     = $this->input->post('room_number');
         $data['type']       = $this->input->post('type');
         $data['floor']       = $this->input->post('floor');
+        $data['bed_count']       = $this->input->post('bed_count');
         $data['description']    = $this->input->post('description');
         $returned_array = null_checking($data);
         $this->db->where('room_id',$room_id);

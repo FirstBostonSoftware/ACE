@@ -7,8 +7,8 @@
 <table class="table table-bordered table-striped datatable" id="table-2">
     <thead>
         <tr>
-            <th><?php echo get_phrase('bed_number');?></th>
-            <th><?php echo get_phrase('bed_type');?></th>
+            <th><?php echo get_phrase('room_number');?></th>
+            <th><?php echo get_phrase('room_type');?></th>
             <th><?php echo get_phrase('patient');?></th>
             <th><?php echo get_phrase('allotment_time');?></th>
             <th><?php echo get_phrase('discharge_time');?></th>
@@ -20,11 +20,10 @@
         <?php foreach ($bed_allotment_info as $row) { ?>   
             <tr>
                 <td>
-                    <?php $bed_number = $this->db->get_where('bed' , array('bed_id' => $row['bed_id'] ))->row()->bed_number;
-                        echo $bed_number;?>
+                    <?php echo $row['room_number'];?>
                 </td>
                 <td>
-                    <?php $type = $this->db->get_where('bed' , array('bed_id' => $row['bed_id'] ))->row()->type;
+                    <?php $type = $this->db->get_where('room' , array('room_number' => $row['room_number'] ))->row()->type;
                         echo $type;?>
                 </td>
                 <td>

@@ -20,116 +20,40 @@
             <option value="ICU">ICU</option>
         </select>
     </div>
-</div>
-
-<br />
-
-<div class="row">
     <div class="col-sm-3">
-        <a href="#">
-            <div class="tile-stats tile-white tile-white-primary" onclick="showAjaxModal('<?php echo site_url('modal/popup/bed_visual/123');?>');" class="btn btn-primary">
-                <div class="num">Room 123</div>
-                <h6>Vacant: 2 of 12 &nbsp; Type: Ward &nbsp; Floor: 1</h6>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-sm-3">
-        <a href="#">
-            <div class="tile-stats tile-white tile-white-primary" onclick="showAjaxModal('<?php echo site_url('modal/popup/bed_visual/124');?>');" class="btn btn-primary">
-                <div class="num">Room 124</div>
-                <h6>Type: Ward &nbsp; Vacant: 2 &nbsp; Total: 4</h6>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-sm-3">
-        <a href="#">
-            <div class="tile-stats tile-white tile-white-primary" onclick="showAjaxModal('<?php echo site_url('modal/popup/bed_visual/125');?>');" class="btn btn-primary">
-                <div class="num">Room 125</div>
-                <h6>Type: Ward &nbsp; Vacant: 2 &nbsp; Total: 4</h6>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-sm-3">
-        <a href="#">
-            <div class="tile-stats tile-white tile-white-primary" onclick="showAjaxModal('<?php echo site_url('modal/popup/bed_visual/126');?>');" class="btn btn-primary">
-                <div class="num">Room 126</div>
-                <h6>Type: Ward &nbsp; Vacant: 2 &nbsp; Total: 4</h6>
-            </div>
-        </a>
+        <span><i class="fa fa-hdd-o" style="color: green; font-size: 1.5em"></i> vacant</span> 
+        &nbsp;
+         <span><i class="fa fa-hdd-o" style="color: red; font-size: 1.5em"></i> occupied</span>
     </div>
 </div>
 
-<br />
-
 <div class="row">
-    <div class="col-sm-3">
-        <a href="#">
-            <div class="tile-stats tile-white tile-white-primary" onclick="showAjaxModal('<?php echo site_url('modal/popup/bed_visual');?>');" class="btn btn-primary">
-                <div class="num">Room 211</div>
-                <h6>Type: Ward &nbsp; Vacant: 2 &nbsp; Total: 4</h6>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-sm-3">
-        <a href="#">
-            <div class="tile-stats tile-white tile-white-primary" onclick="showAjaxModal('<?php echo site_url('modal/popup/bed_visual');?>');" class="btn btn-primary">
-                <div class="num">Room 212</div>
-                <h6>Type: Ward &nbsp; Vacant: 2 &nbsp; Total: 4</h6>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-sm-3">
-        <a href="#">
-            <div class="tile-stats tile-white tile-white-primary" onclick="showAjaxModal('<?php echo site_url('modal/popup/bed_visual');?>');" class="btn btn-primary">
-                <div class="num">Room 213</div>
-                <h6>Type: Ward &nbsp; Vacant: 2 &nbsp; Total: 4</h6>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-sm-3">
-        <a href="#">
-            <div class="tile-stats tile-white tile-white-primary" onclick="showAjaxModal('<?php echo site_url('modal/popup/bed_visual');?>');" class="btn btn-primary">
-                <div class="num">Room 214</div>
-                <h6>Type: Ward &nbsp; Vacant: 2 &nbsp; Total: 4</h6>
-            </div>
-        </a>
-    </div>
 </div>
-
 <br />
 
 <div class="row">
+    <?php foreach($rooms as $room){?>
+    <?php
+        $occupied_count = $this->db->where('room_number', $room['room_number'])
+                                    ->where('discharge_timestamp >=', time())
+                                    ->from('bed_allotment')
+                                    ->count_all_results();
+        $vacant_count = $room['bed_count'] - $occupied_count;
+    ?>
     <div class="col-sm-3">
         <a href="#">
-            <div class="tile-stats tile-white tile-white-primary" onclick="showAjaxModal('<?php echo site_url('modal/popup/bed_visual');?>');" class="btn btn-primary">
-                <div class="num">Room 342</div>
-                <h6>Type: Ward &nbsp; Vacant: 2 &nbsp; Total: 4</h6>
+            <div class="tile-stats tile-white tile-white-primary" onclick="showAjaxModal('<?php echo site_url('modal/popup/bed_visual/'.$room['room_number']);?>');" class="btn btn-primary">
+                <div class="num">Room <?php echo $room['room_number']; ?></div>
+                <div>
+                    <?php for($i = 0; $i < $vacant_count; $i++) {?>
+                        <i class="fa fa-hdd-o" style="color: green; font-size: 1.5em"></i>
+                    <?php }?>
+                    <?php for($i2 = 0; $i2 < $occupied_count; $i2++) {?>
+                        <i class="fa fa-hdd-o" style="color: red; font-size: 1.5em"></i>
+                    <?php }?>
+                </div>
             </div>
         </a>
     </div>
-
-    <div class="col-sm-3">
-        <a href="#">
-            <div class="tile-stats tile-white tile-white-primary" onclick="showAjaxModal('<?php echo site_url('modal/popup/bed_visual');?>');" class="btn btn-primary">
-                <div class="num">Room 343</div>
-                <h6>Type: Ward &nbsp; Vacant: 2 &nbsp; Total: 4</h6>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-sm-3">
-        <a href="#">
-            <div class="tile-stats tile-white tile-white-primary" onclick="showAjaxModal('<?php echo site_url('modal/popup/bed_visual');?>');" class="btn btn-primary">
-                <div class="num">Room 344</div>
-                <h6>Type: Ward &nbsp; Vacant: 2 &nbsp; Total: 4</h6>
-            </div>
-        </a>
-    </div>
-
+    <?php } ?>
 </div>

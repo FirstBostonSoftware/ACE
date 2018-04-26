@@ -1,5 +1,5 @@
 <?php
-$bed_info                   = $this->db->get('bed')->result_array();
+$rooms                   = $this->db->get('room')->result_array();
 $patient_info               = $this->db->get('patient')->result_array();
 $single_bed_allotment_info  = $this->db->get_where('bed_allotment', array('bed_allotment_id' => $param2))->result_array();
 foreach ($single_bed_allotment_info as $row) {
@@ -21,14 +21,14 @@ foreach ($single_bed_allotment_info as $row) {
                         method="post" enctype="multipart/form-data">
 
                         <div class="form-group">
-                            <label for="field-ta" class="col-sm-3 control-label"><?php echo get_phrase('bed_number'); ?></label>
+                            <label for="field-ta" class="col-sm-3 control-label"><?php echo get_phrase('room_number'); ?></label>
 
                             <div class="col-sm-7">
-                                <select name="bed_id" class="form-control select2" required>
-                                    <option value=""><?php echo get_phrase('select_bed_number'); ?></option>
-                                    <?php foreach ($bed_info as $row2) { ?>
-                                        <option value="<?php echo $row2['bed_id']; ?>" <?php if ($row['bed_id'] == $row2['bed_id']) echo 'selected'; ?>>
-                                            <?php echo $row2['bed_number'] . ' - ' . $row2['type']; ?>
+                                <select name="room_number" class="form-control select2" required>
+                                    <option value=""><?php echo get_phrase('select_room_number'); ?></option>
+                                    <?php foreach ($rooms as $row2) { ?>
+                                        <option value="<?php echo $row2['room_number']; ?>" <?php if ($row['room_number'] == $row2['room_number']) echo 'selected'; ?>>
+                                            <?php echo $row2['room_number'] . ' - ' . $row2['type']; ?>
                                         </option>
                                     <?php } ?>
                                 </select>

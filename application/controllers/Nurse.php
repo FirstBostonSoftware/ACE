@@ -143,7 +143,7 @@ class Nurse extends CI_Controller
             redirect(site_url('nurse/bed_visual'), 'refresh');
         }
         
-        $data['bed_info']   = $this->crud_model->select_bed_info();
+        $data['rooms']   = $this->crud_model->select_room_info();
         $data['page_name']  = 'manage_bed_visual';
         $data['page_title'] = get_phrase('bed_visual');
         $this->load->view('backend/index', $data);

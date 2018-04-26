@@ -64,6 +64,14 @@ foreach ($single_room_info as $row) {
                         </div>
 
                         <div class="form-group">
+                            <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('bed_count'); ?></label>
+
+                            <div class="col-sm-7">
+                                <input type="number" name="bed_count" class="form-control" id="field-1" value="<?php echo $row['bed_count']; ?>" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="field-ta" class="col-sm-3 control-label"><?php echo get_phrase('description'); ?></label>
 
                             <div class="col-sm-7">

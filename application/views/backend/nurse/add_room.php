@@ -54,6 +54,14 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('bed_count'); ?></label>
+
+                        <div class="col-sm-7">
+                            <input type="number" name="bed_count" class="form-control" id="field-1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="field-ta" class="col-sm-3 control-label"><?php echo get_phrase('description'); ?></label>
 
                         <div class="col-sm-7">
