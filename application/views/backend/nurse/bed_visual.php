@@ -4,10 +4,10 @@ $room = $this->db->get_where('room', array('room_number' => $param2))->row();
 // $patients = $this->db->where('room_number', $param2)
 //                         ->where('discharge_timestamp <=', time())
 //                         ->from('bed_allotment')
-//                         ->get();
+//                         ->get()->result_array();
 
 
-$patients = $this->db->get_where('bed_allotment', array('room_number' => $param2))
+$patients = $this->db->get_where('bed_allotment', array('room_number' => $param2, 'discharge_timestamp >=' => time()))
                     ->result_array();
 ?>
 <div class="row">
@@ -46,116 +46,6 @@ $patients = $this->db->get_where('bed_allotment', array('room_number' => $param2
                     </div>
                  </div>
             </div>
-            <!-- <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <div class="tile-stats tile-white-red">
-                                <div class="num">#12</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <div class="tile-stats tile-white-red">
-                                <div class="num">#13</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <div class="tile-stats tile-white-aqua">
-                                <div class="num">#14</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <div class="tile-stats tile-white-red">
-                                <div class="num">#15</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <br />
-
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <div class="tile-stats tile-white-red">
-                                <div class="num">#16</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <div class="tile-stats tile-white-red">
-                                <div class="num">#17</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <div class="tile-stats tile-white-red">
-                                <div class="num">#18</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <div class="tile-stats tile-white-red">
-                                <div class="num">#19</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <br />
-
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <div class="tile-stats tile-white-aqua">
-                                <div class="num">#20</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <div class="tile-stats tile-white-red">
-                                <div class="num">#21</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <div class="tile-stats tile-white-red">
-                                <div class="num">#23</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <a href="#">
-                            <div class="tile-stats tile-white-red">
-                                <div class="num">#24</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-            </div> -->
-
         </div>
-
     </div>
 </div>
